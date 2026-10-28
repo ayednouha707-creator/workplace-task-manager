@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="left">
+      <div class="badge blue">Admin</div>
+      <b>Admin Dashboard</b>
+      <span id="who" class="badge"></span>
+    </div>
+    <button id="logout" class="secondary">Logout</button>
+  </header>
+
+  <main>
+    <div class="row">
+      <div class="card" style="flex:1; min-width:320px">
+        <h3>Create & Assign Task</h3>
+
+        <div>
+          <label>Title</label>
+          <input id="t_title" placeholder="Prepare weekly report" />
+        </div>
+
+        <div style="margin-top:10px">
+          <label>Description</label>
+          <textarea id="t_desc" rows="3" placeholder="Details..."></textarea>
+        </div>
+
+        <div style="margin-top:10px">
+          <label>Assign to (employee)</label>
+          <select id="t_assign"></select>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+          <button id="btnCreateTask">Assign Task</button>
+          <span id="msgTask"></span>
+        </div>
+
+        <hr/>
+        <small>Note: employees are pre-created in MongoDB (company database).</small>
+      </div>
+
+      <div class="card" style="flex:1; min-width:320px">
+        <h3>Task Overview</h3>
+        <div class="row">
+          <div class="badge orange" id="countTodo">To do: 0</div>
+          <div class="badge blue" id="countProg">In progress: 0</div>
+          <div class="badge green" id="countDone">Done: 0</div>
+        </div>
+
+        <div style="margin-top:12px" class="grid2">
+          <div>
+            <label>Filter by employee</label>
+            <select id="filterEmp"></select>
+          </div>
+          <div>
+            <label>Filter by status</label>
+            <select id="filterStatus">
+              <option value="all">All</option>
+              <option value="todo">To do</option>
+              <option value="in_progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+          <button id="btnApply" class="ghost">Apply</button>
+          <button id="btnClear" class="ghost">Clear</button>
+          <span id="msg"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="topbar">
+        <h3 style="margin:0">All Tasks (Tracking)</h3>
+        <button id="refresh" class="ghost">Refresh</button>
+      </div>
+      <div id="allTasks"></div>
+    </div>
+  </main>
+
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>
